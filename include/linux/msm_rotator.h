@@ -17,6 +17,16 @@
 
 #define ROTATOR_FLAGS_BIT_PERFORMANCE  (1 << 0)
 
+#define MSM_ROTATOR_IOCTL_BUFFER_SYNC   \
+	_IOW(MSM_ROTATOR_IOCTL_MAGIC, 4, struct msm_rotator_buf_sync)
+
+struct msm_rotator_buf_sync {
+	uint32_t session_id;
+	uint32_t flags;
+	int acq_fen_fd;
+	int rel_fen_fd;
+};
+
 enum rotator_clk_type {
 	ROTATOR_CORE_CLK,
 	ROTATOR_PCLK,

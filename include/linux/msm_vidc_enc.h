@@ -122,9 +122,11 @@
 #define VEN_FLUSH_OUTPUT	2
 #define VEN_FLUSH_ALL	3
 
-#define VEN_INPUTFMT_NV12	1
-#define VEN_INPUTFMT_NV21	2
-#define VEN_INPUTFMT_NV12_16M2KA	3
+/*Different input formats for YUV data.*/
+#define VEN_INPUTFMT_NV12       1/* NV12 Linear */
+#define VEN_INPUTFMT_NV21       2/* NV21 Linear */
+#define VEN_INPUTFMT_NV12_16M2KA        3/* NV12 Linear */
+#define VEN_INPUTFMT_NV21_16M2KA        4
 
 #define VEN_ROTATION_0	1
 #define VEN_ROTATION_90	2
@@ -362,6 +364,10 @@ struct venc_ioctl_msg{
 
 #define VEN_IOCTL_SET_PERF_CLK \
     _IOR(VEN_IOCTLBASE_ENC, 51, struct venc_ioctl_msg)
+
+/*IOCTL params:GET: InputData - NULL, OutputData - unsigned int.*/
+#define VEN_IOCTL_GET_PERF_LEVEL \
+        _IOR(VEN_IOCTLBASE_ENC, 52, struct venc_ioctl_msg)
 
 struct venc_switch{
 	unsigned char	status;
